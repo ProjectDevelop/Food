@@ -1,0 +1,17 @@
+E:\SmarttStudio\Food\FoodProject\obj\Debug\FoodProject.csprojAssemblyReference.cache
+E:\SmarttStudio\Food\FoodProject\obj\Debug\FoodProject.Properties.Resources.resources
+E:\SmarttStudio\Food\FoodProject\obj\Debug\FoodProject.csproj.GenerateResource.cache
+E:\SmarttStudio\Food\FoodProject\obj\Debug\FoodProject.csproj.CoreCompileInputs.cache
+E:\SmarttStudio\Food\FoodProject\bin\Debug\FoodProject.exe.config
+E:\SmarttStudio\Food\FoodProject\bin\Debug\FoodProject.exe
+E:\SmarttStudio\Food\FoodProject\bin\Debug\FoodProject.pdb
+E:\SmarttStudio\Food\FoodProject\bin\Debug\EntityFramework.dll
+E:\SmarttStudio\Food\FoodProject\bin\Debug\EntityFramework.SqlServer.dll
+E:\SmarttStudio\Food\FoodProject\bin\Debug\WebDriver.dll
+E:\SmarttStudio\Food\FoodProject\bin\Debug\EntityFramework.xml
+E:\SmarttStudio\Food\FoodProject\bin\Debug\EntityFramework.SqlServer.xml
+E:\SmarttStudio\Food\FoodProject\bin\Debug\WebDriver.xml
+E:\SmarttStudio\Food\FoodProject\obj\Debug\FoodProject.csproj.CopyComplete
+E:\SmarttStudio\Food\FoodProject\obj\Debug\FoodProject.exe
+E:\SmarttStudio\Food\FoodProject\obj\Debug\FoodProject.pdb
+E:\SmarttStudio\Food\FoodProject\obj\Debug\FoodProject.Form1.resources
