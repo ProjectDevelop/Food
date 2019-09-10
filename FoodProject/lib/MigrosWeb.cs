@@ -108,7 +108,7 @@ namespace FoodProject.lib
                             //string CampaignTag = box.FindElement(By.ClassName("campaign-tag")).Text;
                             string priceTag = box.FindElement(By.ClassName("price-tag")).Text;
                             string quantity = box.FindElement(By.ClassName("select")).FindElement(By.TagName("label")).Text;
-                            //temp += name + "--" + priceTag + "--" + quantity + "*";
+                            temp += name + "--" + priceTag + "--" + quantity + "*";
                         }
                         catch
                         {

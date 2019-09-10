@@ -40,7 +40,7 @@ public partial class FoodEntities : DbContext
 
     public virtual DbSet<ProductPrice> ProductPrices { get; set; }
 
-    //public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+    public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
