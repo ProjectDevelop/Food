@@ -87,10 +87,9 @@ namespace FoodProject.lib
             this.js = js;
         }
 
-        public void price()
+        public string price()
         {
-            InfoFormPrice.CurrentProgressBar = 0;
-            InfoFormPrice.MaxProgressBar = links.Count();
+            string temp = "";
             foreach (string link in links)
             {
 
@@ -104,17 +103,12 @@ namespace FoodProject.lib
                     {
                         try
                         {
-                            string quantity = "", name = "", priceTag = "", image = "", category = "";
                             if (box.Text == "") continue;
-                            name = box.FindElement(By.TagName("h5")).Text;
+                            string name = box.FindElement(By.TagName("h5")).Text;
                             //string CampaignTag = box.FindElement(By.ClassName("campaign-tag")).Text;
-                            priceTag = box.FindElement(By.ClassName("price-tag")).Text;
-                            quantity = box.FindElement(By.ClassName("select")).FindElement(By.TagName("label")).Text;
-                            image = box.FindElement(By.TagName("img")).GetAttribute("src");
-                            category = box.FindElements(By.XPath("//ul[@class='breadcrumb']/li"))[1].Text;
-                            InfoFormPrice.CurrentTitle = name + "--" + priceTag + "--" + quantity + "--" + category;
-
-
+                            string priceTag = box.FindElement(By.ClassName("price-tag")).Text;
+                            string quantity = box.FindElement(By.ClassName("select")).FindElement(By.TagName("label")).Text;
+                            temp += name + "--" + priceTag + "--" + quantity + "*";
                         }
                         catch
                         {
@@ -127,15 +121,15 @@ namespace FoodProject.lib
                     else break;
                     delay(2);
                 }
-                InfoFormPrice.CurrentProgressBar++;
+                
+                
             }
+            return temp;
         }
 
         private void delay(int second)
         {
             System.Threading.Thread.Sleep(second * 1000);
         }
-
-        
     }
 }
