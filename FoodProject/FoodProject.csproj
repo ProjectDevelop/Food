@@ -80,6 +80,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="lib\CarrefoursaWeb.cs" />
+    <Compile Include="lib\InfoFormPrice.cs" />
     <Compile Include="lib\MigrosWeb.cs" />
     <Compile Include="Market.cs">
       <DependentUpon>Model1.tt</DependentUpon>
