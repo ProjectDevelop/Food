@@ -5,9 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FoodProject.DAL;
+using FoodProject.DAL.Repository;
 using FoodProject.lib;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -18,7 +19,7 @@ namespace FoodProject
     {
         protected IJavaScriptExecutor js;
         protected ChromeDriver browser;
-        Thread thrd;
+        
         public Form1()
         {
             InitializeComponent();
@@ -36,52 +37,16 @@ namespace FoodProject
         private void Button1_Click(object sender, EventArgs e)
         {
             MigrosWeb mig = new MigrosWeb(browser,js);
-            thrd = new Thread(mig.price);
-            thrd.Start();
-            timer1.Start();
-
-            toggleButton(button1);
-            toggleButton(button2);
-            toggleButton(button3);
+            textBox1.Text = mig.price();
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            CarrefoursaWeb ca = new CarrefoursaWeb(browser, js);
-            thrd = new Thread(ca.price);
-            thrd.Start();
-            timer1.Start();
-
-            toggleButton(button1);
-            toggleButton(button2);
-            toggleButton(button3);
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            thrd.Abort();
-
-            toggleButton(button1);
-            toggleButton(button2);
-            toggleButton(button3);
-        }
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            ShowInfo();
-
-        }
-
-        private void ShowInfo()
-        {
-            label1.Text = InfoFormPrice.CurrentTitle;
-            progressBar1.Maximum = InfoFormPrice.MaxProgressBar;
-            progressBar1.Value = InfoFormPrice.CurrentProgressBar;
-        }
-
-        private void toggleButton(Button Tog)
-        {
-            if (Tog.Enabled) Tog.Enabled = false;
-            else Tog.Enabled = true;
+            UserRepository userRepository = new UserRepository();
+            User user = new User();
+            user.Name = "Onat";
+            user.LastName = "Aktaş";
+            userRepository.AddUser(user);
         }
     }
 }
