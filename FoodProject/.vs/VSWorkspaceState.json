@@ -1,6 +1,7 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\lib"
   ],
   "SelectedNode": "\\lib\\MigrosWeb.cs",
   "PreviewInSolutionExplorer": false
