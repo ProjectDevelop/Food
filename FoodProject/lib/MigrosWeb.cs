@@ -87,28 +87,35 @@ namespace FoodProject.lib
             this.js = js;
         }
 
-        public string price()
+        public void price()
         {
-            string temp = "";
+            InfoFormPrice.CurrentProgressBar = 0;
+            InfoFormPrice.MaxProgressBar = links.Count();
             foreach (string link in links)
             {
 
                 browser.Navigate().GoToUrl(link);
 
-                while(true){
+                while (true)
+                {
 
                     IWebElement[] boxs = browser.FindElementsByClassName("list").ToArray();
-                    
+
                     foreach (IWebElement box in boxs)
                     {
                         try
                         {
+                            string quantity = "", name = "", priceTag = "", image = "", category = "";
                             if (box.Text == "") continue;
-                            string name = box.FindElement(By.TagName("h5")).Text;
+                            name = box.FindElement(By.TagName("h5")).Text;
                             //string CampaignTag = box.FindElement(By.ClassName("campaign-tag")).Text;
-                            string priceTag = box.FindElement(By.ClassName("price-tag")).Text;
-                            string quantity = box.FindElement(By.ClassName("select")).FindElement(By.TagName("label")).Text;
-                            temp += name + "--" + priceTag + "--" + quantity + "*";
+                            priceTag = box.FindElement(By.ClassName("price-tag")).Text;
+                            quantity = box.FindElement(By.ClassName("select")).FindElement(By.TagName("label")).Text;
+                            image = box.FindElement(By.TagName("img")).GetAttribute("src");
+                            category = box.FindElements(By.XPath("//ul[@class='breadcrumb']/li"))[1].Text;
+                            InfoFormPrice.CurrentTitle = name + "--" + priceTag + "--" + quantity + "--" + category;
+
+
                         }
                         catch
                         {
@@ -121,15 +128,15 @@ namespace FoodProject.lib
                     else break;
                     delay(2);
                 }
-                
-                
+                InfoFormPrice.CurrentProgressBar++;
             }
-            return temp;
         }
 
         private void delay(int second)
         {
             System.Threading.Thread.Sleep(second * 1000);
         }
+
+
     }
 }
