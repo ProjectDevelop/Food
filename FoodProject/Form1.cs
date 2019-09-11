@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using FoodProject.lib;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using FoodProject.DAL;
+using FoodProject.DAL.Repositories;
 
 namespace FoodProject
 {
@@ -78,6 +80,16 @@ namespace FoodProject
         {
             if (Tog.Enabled) Tog.Enabled = false;
             else Tog.Enabled = true;
+        }
+
+        private void Form1_Load(object sender, System.EventArgs e)
+        {
+            ProductRepository productRepository = new ProductRepository();
+            Product product = new Product();
+            product.Name = "Erik";
+            product.MarketId = 1;
+            product.CategoryId = 1;
+            Product product1 = productRepository.Add(product);
         }
     }
 }
