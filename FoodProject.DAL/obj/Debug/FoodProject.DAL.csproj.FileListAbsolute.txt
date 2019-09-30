@@ -10,3 +10,15 @@ D:\Github\Food\FoodProject.DAL\obj\Debug\FoodProject.DAL.csproj.CoreCompileInput
 D:\Github\Food\FoodProject.DAL\obj\Debug\FoodProject.DAL.csproj.CopyComplete
 D:\Github\Food\FoodProject.DAL\obj\Debug\FoodProject.DAL.dll
 D:\Github\Food\FoodProject.DAL\obj\Debug\FoodProject.DAL.pdb
+E:\SmarttStudio\Food\FoodProject.DAL\bin\Debug\FoodProject.DAL.dll.config
+E:\SmarttStudio\Food\FoodProject.DAL\bin\Debug\FoodProject.DAL.dll
+E:\SmarttStudio\Food\FoodProject.DAL\bin\Debug\FoodProject.DAL.pdb
+E:\SmarttStudio\Food\FoodProject.DAL\bin\Debug\EntityFramework.dll
+E:\SmarttStudio\Food\FoodProject.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\SmarttStudio\Food\FoodProject.DAL\bin\Debug\EntityFramework.xml
+E:\SmarttStudio\Food\FoodProject.DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\SmarttStudio\Food\FoodProject.DAL\obj\Debug\FoodProject.DAL.csprojAssemblyReference.cache
+E:\SmarttStudio\Food\FoodProject.DAL\obj\Debug\FoodProject.DAL.csproj.CoreCompileInputs.cache
+E:\SmarttStudio\Food\FoodProject.DAL\obj\Debug\FoodProject.DAL.csproj.CopyComplete
+E:\SmarttStudio\Food\FoodProject.DAL\obj\Debug\FoodProject.DAL.dll
+E:\SmarttStudio\Food\FoodProject.DAL\obj\Debug\FoodProject.DAL.pdb

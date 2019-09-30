@@ -68,7 +68,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="lib\CarrefoursaWeb.cs" />
-    <Compile Include="lib\InfoFormPrice.cs" />
+    <Compile Include="lib\core\InfoFormPrice.cs" />
+    <Compile Include="lib\core\WebtoDb.cs" />
     <Compile Include="lib\MigrosWeb.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

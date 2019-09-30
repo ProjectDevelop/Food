@@ -7,7 +7,7 @@
       <Diagram DiagramId="8a40146867924f168a27fee62385ebc2" Name="Diagram1">
         <EntityTypeShape EntityType="FoodModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodModel.Market" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FoodModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodModel.Product" Width="1.5" PointX="7.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodModel.ProductPrice" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FoodModel.User" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="FoodModel.FK_Product_Category" ManuallyRouted="false" />

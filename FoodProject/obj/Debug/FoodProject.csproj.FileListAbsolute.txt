@@ -35,3 +35,6 @@ D:\Github\Food\FoodProject\obj\Debug\FoodProject.pdb
 D:\Github\Food\FoodProject\bin\Debug\FoodProject.DAL.dll
 D:\Github\Food\FoodProject\bin\Debug\FoodProject.DAL.pdb
 D:\Github\Food\FoodProject\bin\Debug\FoodProject.DAL.dll.config
+E:\SmarttStudio\Food\FoodProject\bin\Debug\FoodProject.DAL.dll
+E:\SmarttStudio\Food\FoodProject\bin\Debug\FoodProject.DAL.pdb
+E:\SmarttStudio\Food\FoodProject\bin\Debug\FoodProject.DAL.dll.config

@@ -84,12 +84,14 @@ namespace FoodProject
 
         private void Form1_Load(object sender, System.EventArgs e)
         {
+            /*
             ProductRepository productRepository = new ProductRepository();
             Product product = new Product();
             product.Name = "Erik";
             product.MarketId = 1;
             product.CategoryId = 1;
             Product product1 = productRepository.Add(product);
+             */
         }
     }
 }

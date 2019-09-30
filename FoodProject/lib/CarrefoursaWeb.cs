@@ -36,7 +36,7 @@ namespace FoodProject.lib
         {
             InfoFormPrice.CurrentProgressBar = 0;
             InfoFormPrice.MaxProgressBar = links.Count();
-
+            string temp = "";
             foreach (string link in links)
             {
 
@@ -58,6 +58,7 @@ namespace FoodProject.lib
                         image = box.FindElement(By.TagName("img")).GetAttribute("src");
                         category = box.FindElement(By.XPath("//ol[@class='breadcrumb']/li[@class='active']")).Text;
                         InfoFormPrice.CurrentTitle = name + "--" + priceTag + "--" + quantity + "--" + category;
+                        temp += name + "--" + priceTag + "--" + quantity + "--" + category+"*";
                     }
                     catch
                     {

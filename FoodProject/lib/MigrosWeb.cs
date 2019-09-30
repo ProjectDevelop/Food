@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FoodProject.DAL;
+using FoodProject.DAL.Repositories;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -91,6 +93,12 @@ namespace FoodProject.lib
         {
             InfoFormPrice.CurrentProgressBar = 0;
             InfoFormPrice.MaxProgressBar = links.Count();
+
+            ProductRepository productRepository = new ProductRepository();
+            PriceRepository priceRepository = new PriceRepository();
+            Product product = new Product();
+            ProductPrice productPrice = new ProductPrice();
+            int i = 0;
             foreach (string link in links)
             {
 
@@ -115,6 +123,19 @@ namespace FoodProject.lib
                             category = box.FindElements(By.XPath("//ul[@class='breadcrumb']/li"))[1].Text;
                             InfoFormPrice.CurrentTitle = name + "--" + priceTag + "--" + quantity + "--" + category;
 
+                            product.MarketId = 1;
+                            product.Name = name;
+                            product.ImageUrl = image;
+                            product.CategoryId = 1;
+                            product.Status = true;
+                           
+                            Product product1 = productRepository.Add(product);
+
+                            productPrice.ProductId = product1.Id;
+                            productPrice.Price = priceTag;
+                            productPrice.Currency = "TL";
+
+                            priceRepository.Add(productPrice);
 
                         }
                         catch
@@ -128,7 +149,9 @@ namespace FoodProject.lib
                     else break;
                     delay(2);
                 }
+                i++;
                 InfoFormPrice.CurrentProgressBar++;
+                if(i == 2)break;
             }
         }
 
