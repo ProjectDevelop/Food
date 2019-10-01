@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barcode.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
@@ -78,6 +81,7 @@
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BarcodeRepository.cs" />
     <Compile Include="Repositories\PriceRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="User.cs">

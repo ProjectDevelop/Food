@@ -9,6 +9,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using FoodProject.DAL;
 using FoodProject.DAL.Repositories;
+using FoodProject.lib.excel;
 
 namespace FoodProject
 {
@@ -92,6 +93,23 @@ namespace FoodProject
             product.CategoryId = 1;
             Product product1 = productRepository.Add(product);
              */
+        }
+
+        private void Select_Excel_File_Btn_Click(object sender, System.EventArgs e)
+        {
+            string fname = "";
+            openFileDialog1.Title = "Excel File Dialog";
+            openFileDialog1.InitialDirectory = @"c:\";
+            openFileDialog1.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                fname = openFileDialog1.FileName;
+            }
+
+            Excel_Import excel_Import = new Excel_Import();
+            excel_Import.ReadExcel(fname);
         }
     }
 }

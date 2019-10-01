@@ -59,5 +59,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Barcodes">
+      <EntityTypeMapping TypeName="FoodModel.Barcode">
+        <MappingFragment StoreEntitySet="Barcode">
+          <ScalarProperty Name="Barcode1" ColumnName="Barcode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

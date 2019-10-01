@@ -13,6 +13,7 @@
         <AssociationConnector Association="FoodModel.FK_Product_Category" ManuallyRouted="false" />
         <AssociationConnector Association="FoodModel.FK_Product_Market" ManuallyRouted="false" />
         <AssociationConnector Association="FoodModel.FK_ProductPrice_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FoodModel.Barcode" Width="1.5" PointX="5.375" PointY="6" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
