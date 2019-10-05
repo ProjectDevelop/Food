@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Office.Interop.Excel;
+//using Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using FoodProject.DAL.Repositories;
 using FoodProject.DAL;
@@ -22,7 +22,7 @@ namespace FoodProject.lib.excel
 
         public void ReadExcel(string filepath)
         {
-           Application xlApp = new Application();
+           /*Application xlApp = new Application();
            Workbook xlWorkbook = xlApp.Workbooks.Open(filepath);
            _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
            Range xlRange = xlWorksheet.UsedRange;
@@ -64,7 +64,7 @@ namespace FoodProject.lib.excel
             //quit and release  
             xlApp.Quit();
             Marshal.ReleaseComObject(xlApp);
-
+            */
         }
 
     }

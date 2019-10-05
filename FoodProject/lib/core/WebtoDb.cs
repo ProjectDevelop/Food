@@ -25,5 +25,7 @@ namespace FoodProject.lib.core
 
         protected ProductPrice addPrice(ProductPrice productPrice) { return null;}
         protected ProductPrice addPrice(int ProductId, string Price,string Currency) { return null;}
+
+
     }
 }

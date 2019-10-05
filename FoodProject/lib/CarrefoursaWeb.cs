@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FoodProject.DAL;
+using FoodProject.DAL.Repositories;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -12,8 +14,9 @@ namespace FoodProject.lib
     {
         private IJavaScriptExecutor js;
         private ChromeDriver browser;
-
+        BarcodeRepository bar;
         private string[] links = {
+            "https://www.carrefoursa.com/tr/peynir/c/1318?q=%3Arelevance&show=All",
             "https://www.carrefoursa.com/tr/meyve-sebze/c/1014?q=%3Arelevance&show=All",
             "https://www.carrefoursa.com/tr/et-balik-kumes/c/1044?q=%3Arelevance&show=All",
             "https://www.carrefoursa.com/tr/sut-kahvaltilik/c/1310?q=%3Arelevance&show=All",
@@ -30,6 +33,7 @@ namespace FoodProject.lib
         {
             this.browser = browser;
             this.js = js;
+            bar = new BarcodeRepository();
         }
 
         public void price()
@@ -59,6 +63,10 @@ namespace FoodProject.lib
                         category = box.FindElement(By.XPath("//ol[@class='breadcrumb']/li[@class='active']")).Text;
                         InfoFormPrice.CurrentTitle = name + "--" + priceTag + "--" + quantity + "--" + category;
                         temp += name + "--" + priceTag + "--" + quantity + "--" + category+"*";
+
+                        Barcode[] tem = bar.getMatch(name.Split(' '));
+
+                        string tut = "DUr";
                     }
                     catch
                     {
@@ -75,7 +83,6 @@ namespace FoodProject.lib
         {
             System.Threading.Thread.Sleep(second * 1000);
         }
-
 
     }
 }

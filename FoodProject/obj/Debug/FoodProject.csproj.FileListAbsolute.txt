@@ -39,3 +39,4 @@ E:\SmarttStudio\Food\FoodProject\bin\Debug\FoodProject.DAL.dll
 E:\SmarttStudio\Food\FoodProject\bin\Debug\FoodProject.DAL.pdb
 E:\SmarttStudio\Food\FoodProject\bin\Debug\FoodProject.DAL.dll.config
 D:\Github\Food\FoodProject\obj\Debug\FoodProject.csproj.ResolveComReference.cache
+E:\SmarttStudio\Food\FoodProject\obj\Debug\FoodProject.csproj.ResolveComReference.cache

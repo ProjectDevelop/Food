@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FoodProject.DAL.Repositories
 {
-   public class BarcodeRepository
+    public class BarcodeRepository
     {
         FoodEntities FoodEntities;
         public BarcodeRepository()
@@ -20,5 +20,24 @@ namespace FoodProject.DAL.Repositories
             FoodEntities.SaveChanges();
             return barcode;
         }
+
+        public Barcode[] getMatch(params string[] keyWords) {
+            FoodEntities.Barcodes.SqlQuery(matchquery(keyWords));
+            return null;|
+        }
+
+
+        private string matchquery(params string[] keyWords)
+        {
+
+            string temp = "select * from Barcode where";
+            foreach (string word in keyWords)
+            {
+                temp += "ProductName like '%" + word + "%' ";
+            }
+
+            return temp;
+        }
+
     }
 }
