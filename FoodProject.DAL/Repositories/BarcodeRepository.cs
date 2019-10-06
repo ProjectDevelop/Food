@@ -21,9 +21,11 @@ namespace FoodProject.DAL.Repositories
             return barcode;
         }
 
-        public Barcode[] getMatch(params string[] keyWords) {
-            FoodEntities.Barcodes.SqlQuery(matchquery(keyWords));
-            return null;|
+        public Barcode getMatch(params string[] keyWords) {
+
+            Barcode temp = FoodEntities.Barcodes.SqlQuery(matchquery(keyWords)).FirstOrDefault<Barcode>();
+            return temp;
+
         }
 
 
@@ -33,9 +35,10 @@ namespace FoodProject.DAL.Repositories
             string temp = "select * from Barcode where";
             foreach (string word in keyWords)
             {
-                temp += "ProductName like '%" + word + "%' ";
+                
+                temp += "ProductName like '%" + word + "%' and ";
             }
-
+            temp = temp.Substring(0, temp.Length - 4);
             return temp;
         }
 

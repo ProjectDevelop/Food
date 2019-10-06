@@ -5,15 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using FoodProject.DAL;
 using FoodProject.DAL.Repositories;
+using FoodProject.lib.core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace FoodProject.lib
 {
-    class MigrosWeb
+    class MigrosWeb : BrowserAndDatabase
     {
-        private IJavaScriptExecutor js;
-        private ChromeDriver browser;
 
         private string[] links = {
             "https://www.migros.com.tr/meyve-c-65",
@@ -83,22 +82,17 @@ namespace FoodProject.lib
             "https://www.migros.com.tr/altin-c-1118a"
         };
 
-        public MigrosWeb(ChromeDriver browser, IJavaScriptExecutor js)
+        public MigrosWeb(ChromeDriver browser, IJavaScriptExecutor js) : base(browser, js)
         {
-            this.browser = browser;
-            this.js = js;
+
         }
+
 
         public void price()
         {
             InfoFormPrice.CurrentProgressBar = 0;
             InfoFormPrice.MaxProgressBar = links.Count();
 
-            ProductRepository productRepository = new ProductRepository();
-            PriceRepository priceRepository = new PriceRepository();
-            Product product = new Product();
-            ProductPrice productPrice = new ProductPrice();
-            int i = 0;
             foreach (string link in links)
             {
 
@@ -123,20 +117,6 @@ namespace FoodProject.lib
                             category = box.FindElements(By.XPath("//ul[@class='breadcrumb']/li"))[1].Text;
                             InfoFormPrice.CurrentTitle = name + "--" + priceTag + "--" + quantity + "--" + category;
 
-                            product.MarketId = 1;
-                            product.Name = name;
-                            product.ImageUrl = image;
-                            product.CategoryId = 1;
-                            product.Status = true;
-                           
-                            Product product1 = productRepository.Add(product);
-
-                            productPrice.ProductId = product1.Id;
-                            productPrice.Price = priceTag;
-                            productPrice.Currency = "TL";
-
-                            priceRepository.Add(productPrice);
-
                         }
                         catch
                         {
@@ -149,15 +129,8 @@ namespace FoodProject.lib
                     else break;
                     delay(2);
                 }
-                i++;
                 InfoFormPrice.CurrentProgressBar++;
-                if(i == 2)break;
             }
-        }
-
-        private void delay(int second)
-        {
-            System.Threading.Thread.Sleep(second * 1000);
         }
 
 

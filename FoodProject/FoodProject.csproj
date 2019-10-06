@@ -69,7 +69,7 @@
     </Compile>
     <Compile Include="lib\CarrefoursaWeb.cs" />
     <Compile Include="lib\core\InfoFormPrice.cs" />
-    <Compile Include="lib\core\WebtoDb.cs" />
+    <Compile Include="lib\core\BrowserAndDatabase.cs" />
     <Compile Include="lib\excel\Excel_Import.cs" />
     <Compile Include="lib\MigrosWeb.cs" />
     <Compile Include="Program.cs" />

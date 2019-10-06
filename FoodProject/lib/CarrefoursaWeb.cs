@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using FoodProject.DAL;
 using FoodProject.DAL.Repositories;
+using FoodProject.lib.core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace FoodProject.lib
 {
-    class CarrefoursaWeb
+    class CarrefoursaWeb : BrowserAndDatabase
     {
-        private IJavaScriptExecutor js;
-        private ChromeDriver browser;
+
         BarcodeRepository bar;
+
         private string[] links = {
             "https://www.carrefoursa.com/tr/peynir/c/1318?q=%3Arelevance&show=All",
             "https://www.carrefoursa.com/tr/meyve-sebze/c/1014?q=%3Arelevance&show=All",
@@ -29,10 +30,9 @@ namespace FoodProject.lib
             "https://www.carrefoursa.com/tr/ev-yasam-eglence/c/2188?q=%3Arelevance&show=All"
         };
 
-        public CarrefoursaWeb(ChromeDriver browser, IJavaScriptExecutor js)
+        public CarrefoursaWeb(ChromeDriver browser, IJavaScriptExecutor js) : base(browser, js)
         {
-            this.browser = browser;
-            this.js = js;
+
             bar = new BarcodeRepository();
         }
 
@@ -40,7 +40,7 @@ namespace FoodProject.lib
         {
             InfoFormPrice.CurrentProgressBar = 0;
             InfoFormPrice.MaxProgressBar = links.Count();
-            string temp = "";
+
             foreach (string link in links)
             {
 
@@ -62,11 +62,9 @@ namespace FoodProject.lib
                         image = box.FindElement(By.TagName("img")).GetAttribute("src");
                         category = box.FindElement(By.XPath("//ol[@class='breadcrumb']/li[@class='active']")).Text;
                         InfoFormPrice.CurrentTitle = name + "--" + priceTag + "--" + quantity + "--" + category;
-                        temp += name + "--" + priceTag + "--" + quantity + "--" + category+"*";
 
-                        Barcode[] tem = bar.getMatch(name.Split(' '));
+                        Barcode tem = bar.getMatch(name.Split(' '));
 
-                        string tut = "DUr";
                     }
                     catch
                     {
@@ -77,11 +75,6 @@ namespace FoodProject.lib
                 InfoFormPrice.CurrentProgressBar++;
             }
 
-        }
-
-        private void delay(int second)
-        {
-            System.Threading.Thread.Sleep(second * 1000);
         }
 
     }
