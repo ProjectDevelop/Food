@@ -66,7 +66,7 @@ namespace FoodProject.lib
                         Barcode tem = bar.getMatch(name.Split(' '));
 
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         continue;
                     }

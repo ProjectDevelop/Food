@@ -23,7 +23,7 @@ namespace FoodProject.DAL.Repositories
 
         public Barcode getMatch(params string[] keyWords) {
 
-            Barcode temp = FoodEntities.Barcodes.SqlQuery(matchquery(keyWords)).FirstOrDefault<Barcode>();
+            Barcode temp = FoodEntities.Barcodes.SqlQuery(matchquery(keyWords)).FirstOrDefault();
             return temp;
 
         }
@@ -32,7 +32,7 @@ namespace FoodProject.DAL.Repositories
         private string matchquery(params string[] keyWords)
         {
 
-            string temp = "select * from Barcode where";
+            string temp = "select * from Barcode where ";
             foreach (string word in keyWords)
             {
                 
