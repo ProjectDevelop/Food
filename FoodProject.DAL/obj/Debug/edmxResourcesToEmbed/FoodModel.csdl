@@ -19,9 +19,45 @@
     <Property Name="LocationLat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LocationLan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Boolean" />
-    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Market" FromRole="Market" ToRole="Product" />
+    <NavigationProperty Name="MarketProducts" Relationship="Self.FK_MarketProduct_Market" FromRole="Market" ToRole="MarketProduct" />
+  </EntityType>
+  <EntityType Name="MarketProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MarketId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Market" Relationship="Self.FK_MarketProduct_Market" FromRole="MarketProduct" ToRole="Market" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_MarketProduct_Product" FromRole="MarketProduct" ToRole="Product" />
+    <NavigationProperty Name="ProductPrices" Relationship="Self.ProductPrice_FK" FromRole="MarketProduct" ToRole="ProductPrice" />
   </EntityType>
   <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="Barcode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="MarketProducts" Relationship="Self.FK_MarketProduct_Product" FromRole="Product" ToRole="MarketProduct" />
+  </EntityType>
+  <EntityType Name="ProductPrice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="marketProcutId" Type="Int32" Nullable="false" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MarketProduct" Relationship="Self.ProductPrice_FK" FromRole="ProductPrice" ToRole="MarketProduct" />
+  </EntityType>
+  <EntityType Name="TempProduct">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -30,22 +66,8 @@
     <Property Name="CategoryId" Type="Int32" />
     <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Boolean" />
-    <Property Name="MarketId" Type="Int32" />
     <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
-    <NavigationProperty Name="Market" Relationship="Self.FK_Product_Market" FromRole="Product" ToRole="Market" />
-    <NavigationProperty Name="ProductPrices" Relationship="Self.FK_ProductPrice_Product" FromRole="Product" ToRole="ProductPrice" />
-  </EntityType>
-  <EntityType Name="ProductPrice">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductId" Type="Int32" />
-    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Product" Relationship="Self.FK_ProductPrice_Product" FromRole="ProductPrice" ToRole="Product" />
+    <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -71,56 +93,65 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Product_Market">
-    <End Role="Market" Type="Self.Market" Multiplicity="0..1" />
-    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+  <Association Name="FK_MarketProduct_Market">
+    <End Role="Market" Type="Self.Market" Multiplicity="1" />
+    <End Role="MarketProduct" Type="Self.MarketProduct" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Market">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Product">
+      <Dependent Role="MarketProduct">
         <PropertyRef Name="MarketId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ProductPrice_Product">
-    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-    <End Role="ProductPrice" Type="Self.ProductPrice" Multiplicity="*" />
+  <Association Name="FK_MarketProduct_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="MarketProduct" Type="Self.MarketProduct" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="ProductPrice">
+      <Dependent Role="MarketProduct">
         <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductPrice_FK">
+    <End Role="MarketProduct" Type="Self.MarketProduct" Multiplicity="1" />
+    <End Role="ProductPrice" Type="Self.ProductPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MarketProduct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductPrice">
+        <PropertyRef Name="marketProcutId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="FoodEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="Markets" EntityType="Self.Market" />
+    <EntitySet Name="MarketProducts" EntityType="Self.MarketProduct" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="ProductPrices" EntityType="Self.ProductPrice" />
+    <EntitySet Name="TempProducts" EntityType="Self.TempProduct" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
       <End Role="Category" EntitySet="Categories" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
-    <AssociationSet Name="FK_Product_Market" Association="Self.FK_Product_Market">
+    <AssociationSet Name="FK_MarketProduct_Market" Association="Self.FK_MarketProduct_Market">
       <End Role="Market" EntitySet="Markets" />
-      <End Role="Product" EntitySet="Products" />
+      <End Role="MarketProduct" EntitySet="MarketProducts" />
     </AssociationSet>
-    <AssociationSet Name="FK_ProductPrice_Product" Association="Self.FK_ProductPrice_Product">
+    <AssociationSet Name="FK_MarketProduct_Product" Association="Self.FK_MarketProduct_Product">
       <End Role="Product" EntitySet="Products" />
+      <End Role="MarketProduct" EntitySet="MarketProducts" />
+    </AssociationSet>
+    <AssociationSet Name="ProductPrice_FK" Association="Self.ProductPrice_FK">
+      <End Role="MarketProduct" EntitySet="MarketProducts" />
       <End Role="ProductPrice" EntitySet="ProductPrices" />
     </AssociationSet>
-    <EntitySet Name="Barcodes" EntityType="FoodModel.Barcode" />
   </EntityContainer>
-  <EntityType Name="Barcode">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Barcode1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-  </EntityType>
 </Schema>

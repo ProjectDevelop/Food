@@ -22,6 +22,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="MarketProducts">
+      <EntityTypeMapping TypeName="FoodModel.MarketProduct">
+        <MappingFragment StoreEntitySet="MarketProduct">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="FoodModel.Product">
         <MappingFragment StoreEntitySet="Product">
@@ -30,7 +40,6 @@
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="Barcode" ColumnName="Barcode" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="MarketId" ColumnName="MarketId" />
           <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -38,11 +47,24 @@
     <EntitySetMapping Name="ProductPrices">
       <EntityTypeMapping TypeName="FoodModel.ProductPrice">
         <MappingFragment StoreEntitySet="ProductPrice">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="marketProcutId" ColumnName="marketProcutId" />
           <ScalarProperty Name="Currency" ColumnName="Currency" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempProducts">
+      <EntityTypeMapping TypeName="FoodModel.TempProduct">
+        <MappingFragment StoreEntitySet="TempProduct">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -56,15 +78,6 @@
           <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Barcodes">
-      <EntityTypeMapping TypeName="FoodModel.Barcode">
-        <MappingFragment StoreEntitySet="Barcode">
-          <ScalarProperty Name="Barcode1" ColumnName="Barcode" />
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

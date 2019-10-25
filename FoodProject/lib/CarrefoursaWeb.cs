@@ -14,10 +14,8 @@ namespace FoodProject.lib
     class CarrefoursaWeb : BrowserAndDatabase
     {
 
-        BarcodeRepository bar;
-
         private string[] links = {
-            "https://www.carrefoursa.com/tr/peynir/c/1318?q=%3Arelevance&show=All",
+ 
             "https://www.carrefoursa.com/tr/meyve-sebze/c/1014?q=%3Arelevance&show=All",
             "https://www.carrefoursa.com/tr/et-balik-kumes/c/1044?q=%3Arelevance&show=All",
             "https://www.carrefoursa.com/tr/sut-kahvaltilik/c/1310?q=%3Arelevance&show=All",
@@ -28,12 +26,12 @@ namespace FoodProject.lib
             "https://www.carrefoursa.com/tr/kagit-kozmetik/c/1674?q=%3Arelevance&show=All",
             "https://www.carrefoursa.com/tr/elektronik/c/2286?q=%3Arelevance&show=All",
             "https://www.carrefoursa.com/tr/ev-yasam-eglence/c/2188?q=%3Arelevance&show=All"
+
         };
 
         public CarrefoursaWeb(ChromeDriver browser, IJavaScriptExecutor js) : base(browser, js)
         {
 
-            bar = new BarcodeRepository();
         }
 
         public void price()
@@ -44,10 +42,9 @@ namespace FoodProject.lib
             foreach (string link in links)
             {
 
-                browser.Navigate().GoToUrl(link);
+                browserFirst.Navigate().GoToUrl(link);
 
-
-                IWebElement[] boxs = browser.FindElementByClassName("product-listing").FindElements(By.TagName("li")).ToArray();
+                IWebElement[] boxs = browserFirst.FindElementByClassName("product-listing").FindElements(By.TagName("li")).ToArray();
 
                 foreach (IWebElement box in boxs)
                 {
@@ -63,10 +60,10 @@ namespace FoodProject.lib
                         category = box.FindElement(By.XPath("//ol[@class='breadcrumb']/li[@class='active']")).Text;
                         InfoFormPrice.CurrentTitle = name + "--" + priceTag + "--" + quantity + "--" + category;
 
-                        Barcode tem = bar.getMatch(name.Split(' '));
+                        TempProduct pro = addTempProduct(name, image,1,"",true);
 
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         continue;
                     }
@@ -76,6 +73,7 @@ namespace FoodProject.lib
             }
 
         }
+
 
     }
 }

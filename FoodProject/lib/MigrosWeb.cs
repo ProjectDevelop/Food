@@ -96,12 +96,12 @@ namespace FoodProject.lib
             foreach (string link in links)
             {
 
-                browser.Navigate().GoToUrl(link);
+                browserFirst.Navigate().GoToUrl(link);
 
                 while (true)
                 {
 
-                    IWebElement[] boxs = browser.FindElementsByClassName("list").ToArray();
+                    IWebElement[] boxs = browserFirst.FindElementsByClassName("list").ToArray();
 
                     foreach (IWebElement box in boxs)
                     {
@@ -110,12 +110,13 @@ namespace FoodProject.lib
                             string quantity = "", name = "", priceTag = "", image = "", category = "";
                             if (box.Text == "") continue;
                             name = box.FindElement(By.TagName("h5")).Text;
-                            //string CampaignTag = box.FindElement(By.ClassName("campaign-tag")).Text;
                             priceTag = box.FindElement(By.ClassName("price-tag")).Text;
                             quantity = box.FindElement(By.ClassName("select")).FindElement(By.TagName("label")).Text;
                             image = box.FindElement(By.TagName("img")).GetAttribute("src");
                             category = box.FindElements(By.XPath("//ul[@class='breadcrumb']/li"))[1].Text;
                             InfoFormPrice.CurrentTitle = name + "--" + priceTag + "--" + quantity + "--" + category;
+
+                            TempProduct pro = addTempProduct(name, image, 1, "", true);
 
                         }
                         catch
@@ -124,8 +125,8 @@ namespace FoodProject.lib
                         }
 
                     }
-                    if (browser.FindElementsByClassName("pag-next").Count != 0)
-                        browser.FindElementByClassName("pag-next").Click();
+                    if (browserFirst.FindElementsByClassName("pag-next").Count != 0)
+                        browserFirst.FindElementByClassName("pag-next").Click();
                     else break;
                     delay(2);
                 }

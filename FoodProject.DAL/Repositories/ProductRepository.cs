@@ -20,5 +20,13 @@ namespace FoodProject.DAL.Repositories
             FoodEntities.SaveChanges();
             return product;
         }
+
+        public Product getMatch(string Barcode)
+        {
+            Product temp = FoodEntities.Products.SqlQuery("Select * from Product where Barcode='" + Barcode+"'").FirstOrDefault();
+            return temp;
+
+        }
+
     }
 }

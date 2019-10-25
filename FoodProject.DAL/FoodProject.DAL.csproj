@@ -50,9 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Barcode.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
@@ -74,6 +71,9 @@
     <Compile Include="Market.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MarketProduct.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
@@ -81,9 +81,13 @@
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\BarcodeRepository.cs" />
     <Compile Include="Repositories\PriceRepository.cs" />
+    <Compile Include="Repositories\MarketProductRepository.cs" />
+    <Compile Include="Repositories\TempProductRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="TempProduct.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
@@ -100,6 +104,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="FoodModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FoodModel.edmx</DependentUpon>
@@ -110,9 +117,6 @@
       <DependentUpon>FoodModel.edmx</DependentUpon>
       <LastGenOutput>FoodModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

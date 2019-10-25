@@ -14,12 +14,12 @@ namespace FoodProject.DAL
     
     public partial class ProductPrice
     {
-        public int Id { get; set; }
-        public Nullable<int> ProductId { get; set; }
+        public int id { get; set; }
+        public int marketProcutId { get; set; }
         public string Currency { get; set; }
         public string Price { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
     
-        public virtual Product Product { get; set; }
+        public virtual MarketProduct MarketProduct { get; set; }
     }
 }

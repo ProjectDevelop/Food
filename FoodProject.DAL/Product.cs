@@ -17,7 +17,7 @@ namespace FoodProject.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ProductPrices = new HashSet<ProductPrice>();
+            this.MarketProducts = new HashSet<MarketProduct>();
         }
     
         public int Id { get; set; }
@@ -25,12 +25,10 @@ namespace FoodProject.DAL
         public Nullable<int> CategoryId { get; set; }
         public string Barcode { get; set; }
         public Nullable<bool> Status { get; set; }
-        public Nullable<int> MarketId { get; set; }
         public string ImageUrl { get; set; }
     
         public virtual Category Category { get; set; }
-        public virtual Market Market { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductPrice> ProductPrices { get; set; }
+        public virtual ICollection<MarketProduct> MarketProducts { get; set; }
     }
 }

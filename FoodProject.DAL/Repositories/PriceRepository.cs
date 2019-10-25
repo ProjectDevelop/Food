@@ -20,5 +20,6 @@ namespace FoodProject.DAL.Repositories
             FoodEntities.SaveChanges();
             return price;
         }
+
     }
 }
